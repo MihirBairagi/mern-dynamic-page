@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import Page from "../server/models/page.js";
+import { connectDB } from "../server/db.js";
 
 dotenv.config();
 
@@ -23,15 +24,15 @@ app.use(express.json());
 // MongoDB Connection
 // =========================
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("MongoDB connected successfully");
-  })
-  .catch((error) => {
-    console.error("MongoDB connection failed:");
-    console.error(error.message);
-  });
+// mongoose
+//   .connect(process.env.MONGODB_URI)
+//   .then(() => {
+//     console.log("MongoDB connected successfully");
+//   })
+//   .catch((error) => {
+//     console.error("MongoDB connection failed:");
+//     console.error(error.message);
+//   });
 
 
 // =========================
@@ -55,6 +56,8 @@ app.get("/api/page", async (req, res) => {
 
   try {
 
+    await connectDB();
+
     const page = await Page.findOne();
 
     if (!page) {
@@ -72,7 +75,8 @@ app.get("/api/page", async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-      message: "Server error"
+      message: "Server error",
+      error: error.message
     });
 
   }
@@ -88,15 +92,15 @@ app.post("/api/page", async (req, res) => {
 
   try {
 
+    await connectDB();
+
     const {
       heading,
       description,
       slides
     } = req.body;
 
-
     let page = await Page.findOne();
-
 
     if (page) {
 
@@ -116,13 +120,9 @@ app.post("/api/page", async (req, res) => {
 
     }
 
-
     res.status(200).json({
-
       message: "Page saved successfully",
-
       page
-
     });
 
   } catch (error) {
@@ -130,15 +130,11 @@ app.post("/api/page", async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-
       message: "Server error",
-
       error: error.message
-
     });
 
   }
 
 });
-
 export default app;
