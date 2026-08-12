@@ -3,7 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import Page from "./models/Page.js";
+import Page from "./models/page.js";
 
 dotenv.config();
 
