@@ -6,8 +6,7 @@ function Edit({ pageData, setPageData }) {
 
     try {
 
-      const response =
-        await savePageData(pageData);
+      const response = await savePageData(pageData);
 
       console.log(response);
 
@@ -31,7 +30,7 @@ function Edit({ pageData, setPageData }) {
 
     const newSlide = {
       id: Date.now(),
-      image: "https://picsum.photos/800/500",
+      image: "https://www.9mindia.in/wp-content/uploads/2026/05/staff-walking-through-an-office-2026-03-25-00-52-58-utc-1.webp",
       title: "New Slide",
       description: "New slide description."
     };
@@ -64,14 +63,11 @@ function Edit({ pageData, setPageData }) {
 
   return (
 
-    <main className="page">
+    <main className="edit-page">
 
       <section className="editor-section">
 
         <h1>Edit Homepage</h1>
-
-
-        {/* Heading */}
 
         <div className="form-group">
 
@@ -94,9 +90,6 @@ function Edit({ pageData, setPageData }) {
 
         </div>
 
-
-        {/* Description */}
-
         <div className="form-group">
 
           <label>
@@ -117,13 +110,9 @@ function Edit({ pageData, setPageData }) {
 
         </div>
 
-
-        {/* Slides */}
-
         <h2>
           Slides
         </h2>
-
 
         {pageData.slides.map(
           (slide, index) => (
@@ -136,9 +125,6 @@ function Edit({ pageData, setPageData }) {
               <h3>
                 Slide {index + 1}
               </h3>
-
-
-              {/* Image */}
 
               <div className="form-group">
 
@@ -169,9 +155,6 @@ function Edit({ pageData, setPageData }) {
 
               </div>
 
-
-              {/* Title */}
-
               <div className="form-group">
 
                 <label>
@@ -200,9 +183,6 @@ function Edit({ pageData, setPageData }) {
                 />
 
               </div>
-
-
-              {/* Description */}
 
               <div className="form-group">
 

@@ -5,7 +5,7 @@ function Home({ pageData }) {
 
   return (
 
-    <main id="main-page">
+    <main className="main-page">
 
 
       <section className="banner-section">
