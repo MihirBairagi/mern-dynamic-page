@@ -49,10 +49,10 @@ function Edit({ pageData, setPageData }) {
 
   const removeSlide = (slideId) => {
 
-    const updatedSlides =
-      pageData.slides.filter(
-        (slide) => slide.id !== slideId
-      );
+    const updatedSlides = pageData.slides.filter(
+      (slide) =>
+        (slide._id || slide.id) !== slideId
+    );
 
     setPageData({
       ...pageData,
@@ -125,130 +125,104 @@ function Edit({ pageData, setPageData }) {
         </h2>
 
 
-        {pageData.slides.map(
-          (slide, index) => (
+        {pageData.slides.map((slide, index) => (
+          <div
+            className="slide-editor"
+            key={slide._id || slide.id}
+          >
 
-            <div
-              className="slide-editor"
-              key={slide.id}
-            >
+            <h3>
+              Slide {index + 1}
+            </h3>
 
-              <h3>
-                Slide {index + 1}
-              </h3>
+            <div className="form-group">
+              <label>Image URL</label>
 
+              <input
+                type="text"
+                value={slide.image}
+                onChange={(event) => {
 
-              {/* Image */}
+                  const updatedSlides = [
+                    ...pageData.slides
+                  ];
 
-              <div className="form-group">
+                  updatedSlides[index] = {
+                    ...updatedSlides[index],
+                    image: event.target.value
+                  };
 
-                <label>
-                  Image URL
-                </label>
+                  setPageData({
+                    ...pageData,
+                    slides: updatedSlides
+                  });
 
-                <input
-                  type="text"
-                  value={slide.image}
-                  onChange={(event) => {
-
-                    const updatedSlides =
-                      [...pageData.slides];
-
-                    updatedSlides[index] = {
-                      ...updatedSlides[index],
-                      image: event.target.value
-                    };
-
-                    setPageData({
-                      ...pageData,
-                      slides: updatedSlides
-                    });
-
-                  }}
-                />
-
-              </div>
-
-
-              {/* Title */}
-
-              <div className="form-group">
-
-                <label>
-                  Title
-                </label>
-
-                <input
-                  type="text"
-                  value={slide.title}
-                  onChange={(event) => {
-
-                    const updatedSlides =
-                      [...pageData.slides];
-
-                    updatedSlides[index] = {
-                      ...updatedSlides[index],
-                      title: event.target.value
-                    };
-
-                    setPageData({
-                      ...pageData,
-                      slides: updatedSlides
-                    });
-
-                  }}
-                />
-
-              </div>
-
-
-              {/* Description */}
-
-              <div className="form-group">
-
-                <label>
-                  Description
-                </label>
-
-                <textarea
-                  value={slide.description}
-                  onChange={(event) => {
-
-                    const updatedSlides =
-                      [...pageData.slides];
-
-                    updatedSlides[index] = {
-                      ...updatedSlides[index],
-                      description:
-                        event.target.value
-                    };
-
-                    setPageData({
-                      ...pageData,
-                      slides: updatedSlides
-                    });
-
-                  }}
-                />
-
-              </div>
-
-
-              {/* Remove */}
-
-              <button
-                type="button"
-                onClick={() =>
-                  removeSlide(slide.id)
-                }
-              >
-                Remove Slide
-              </button>
-
+                }}
+              />
             </div>
 
-          )
-        )}
+            <div className="form-group">
+              <label>Title</label>
+
+              <input
+                type="text"
+                value={slide.title}
+                onChange={(event) => {
+
+                  const updatedSlides = [
+                    ...pageData.slides
+                  ];
+
+                  updatedSlides[index] = {
+                    ...updatedSlides[index],
+                    title: event.target.value
+                  };
+
+                  setPageData({
+                    ...pageData,
+                    slides: updatedSlides
+                  });
+
+                }}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Description</label>
+
+              <textarea
+                value={slide.description}
+                onChange={(event) => {
+
+                  const updatedSlides = [
+                    ...pageData.slides
+                  ];
+
+                  updatedSlides[index] = {
+                    ...updatedSlides[index],
+                    description: event.target.value
+                  };
+
+                  setPageData({
+                    ...pageData,
+                    slides: updatedSlides
+                  });
+
+                }}
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={() =>
+                removeSlide(slide._id || slide.id)
+              }
+            >
+              Remove Slide
+            </button>
+
+          </div>
+        ))}
 
 
         {/* Add */}
