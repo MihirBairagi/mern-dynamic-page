@@ -70,8 +70,6 @@ function Edit({ pageData, setPageData }) {
 
         <h1>Edit Homepage</h1>
 
-
-
         <div className="form-group">
 
           <label>
@@ -93,8 +91,6 @@ function Edit({ pageData, setPageData }) {
 
         </div>
 
-
-
         <div className="form-group">
 
           <label>
@@ -115,135 +111,135 @@ function Edit({ pageData, setPageData }) {
 
         </div>
 
+        <div className="slides-box">
+          <h2>
+            Slides
+          </h2>
 
+          {pageData.slides.map((slide, index) => (
+            <div
+              className="slide-editor"
+              key={slide._id || slide.id}
+            >
 
-        <h2>
-          Slides
-        </h2>
+              <h3>
+                Slide {index + 1}
+              </h3>
 
+              <div className="form-group">
+                <label>Image URL</label>
 
-        {pageData.slides.map((slide, index) => (
-          <div
-            className="slide-editor"
-            key={slide._id || slide.id}
-          >
+                <input
+                  type="text"
+                  value={slide.image}
+                  onChange={(event) => {
 
-            <h3>
-              Slide {index + 1}
-            </h3>
+                    const updatedSlides = [
+                      ...pageData.slides
+                    ];
 
-            <div className="form-group">
-              <label>Image URL</label>
+                    updatedSlides[index] = {
+                      ...updatedSlides[index],
+                      image: event.target.value
+                    };
 
-              <input
-                type="text"
-                value={slide.image}
-                onChange={(event) => {
+                    setPageData({
+                      ...pageData,
+                      slides: updatedSlides
+                    });
 
-                  const updatedSlides = [
-                    ...pageData.slides
-                  ];
+                  }}
+                />
+              </div>
 
-                  updatedSlides[index] = {
-                    ...updatedSlides[index],
-                    image: event.target.value
-                  };
+              <div className="form-group">
+                <label>Title</label>
 
-                  setPageData({
-                    ...pageData,
-                    slides: updatedSlides
-                  });
+                <input
+                  type="text"
+                  value={slide.title}
+                  onChange={(event) => {
 
-                }}
-              />
+                    const updatedSlides = [
+                      ...pageData.slides
+                    ];
+
+                    updatedSlides[index] = {
+                      ...updatedSlides[index],
+                      title: event.target.value
+                    };
+
+                    setPageData({
+                      ...pageData,
+                      slides: updatedSlides
+                    });
+
+                  }}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Description</label>
+
+                <textarea
+                  value={slide.description}
+                  onChange={(event) => {
+
+                    const updatedSlides = [
+                      ...pageData.slides
+                    ];
+
+                    updatedSlides[index] = {
+                      ...updatedSlides[index],
+                      description: event.target.value
+                    };
+
+                    setPageData({
+                      ...pageData,
+                      slides: updatedSlides
+                    });
+
+                  }}
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  removeSlide(slide._id || slide.id)
+                }
+              >
+                Remove Slide
+              </button>
+
             </div>
-
-            <div className="form-group">
-              <label>Title</label>
-
-              <input
-                type="text"
-                value={slide.title}
-                onChange={(event) => {
-
-                  const updatedSlides = [
-                    ...pageData.slides
-                  ];
-
-                  updatedSlides[index] = {
-                    ...updatedSlides[index],
-                    title: event.target.value
-                  };
-
-                  setPageData({
-                    ...pageData,
-                    slides: updatedSlides
-                  });
-
-                }}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Description</label>
-
-              <textarea
-                value={slide.description}
-                onChange={(event) => {
-
-                  const updatedSlides = [
-                    ...pageData.slides
-                  ];
-
-                  updatedSlides[index] = {
-                    ...updatedSlides[index],
-                    description: event.target.value
-                  };
-
-                  setPageData({
-                    ...pageData,
-                    slides: updatedSlides
-                  });
-
-                }}
-              />
-            </div>
+          ))}
+          
+          <div className="add-slide">
 
             <button
               type="button"
-              onClick={() =>
-                removeSlide(slide._id || slide.id)
-              }
+              onClick={addSlide}
             >
-              Remove Slide
+              + Add Slide
             </button>
 
           </div>
-        ))}
 
+        </div>
 
-
-        <div className="editor-actions">
-
+        <div className="save-btn">
           <button
-            type="button"
-            onClick={addSlide}
-          >
-            + Add Slide
+              type="button"
+              onClick={savePage}
+              >
+              Save Changes
           </button>
-
-          <button
-            type="button"
-            onClick={savePage}
-          >
-            Save Changes
-          </button>
-
         </div>
 
         <Link to="/">
          Back to Homepage
-      </Link>
+        </Link>
 
       </section>
 
