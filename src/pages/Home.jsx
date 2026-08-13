@@ -5,10 +5,10 @@ function Home({ pageData }) {
 
   return (
 
-    <main className="page">
+    <main id="main-page">
 
 
-      <section className="page-header">
+      <section className="banner-section">
 
         <h1>
           {pageData.heading}
@@ -28,7 +28,7 @@ function Home({ pageData }) {
       <section className="slider-section">
 
         <h2>
-          Our Slides
+          Test Slider
         </h2>
 
         <Slider

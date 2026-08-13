@@ -2,78 +2,30 @@
   width: 100%;
 }
 
-.page {
+#main-page{
+  max-width: 1600px;
+  margin: auto;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
+  padding: 7rem;
 }
 
-.page-header {
-  margin-bottom: 60px;
-}
-
-.page-header h1 {
-  margin: 0 0 20px;
-  font-size: 48px;
-}
-
-.page-header p {
-  max-width: 800px;
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-.slider-section h2 {
-  margin-bottom: 30px;
-}
-
-.slider {
-  width: 100%;
-}
-
-.slide {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.slide-image {
-  min-height: 350px;
+.slider-section .slide{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #eeeeee;
+  gap: 3rem;
 }
-.slide-image img {
+
+.slider-section .slide .slide-content{
+  width: 45%;
+}
+
+.slider-section .slide .slide-image{
+  width: 45%;
+}
+
+.slider-section .slide .slide-image img{
   width: 100%;
-  height: 350px;
-  display: block;
+  height: 100%;
   object-fit: cover;
-}
-
-.slide-content h3 {
-  margin-top: 0;
-  font-size: 32px;
-}
-
-.slide-content p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .page {
-    padding: 40px 20px;
-  }
-
-  .page-header h1 {
-    font-size: 36px;
-  }
-
-  .slide {
-    grid-template-columns: 1fr;
-  }
 }
