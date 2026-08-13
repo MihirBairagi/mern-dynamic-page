@@ -1,20 +1,11 @@
-import {
-  useEffect,
-  useState
-} from "react";
+import { useEffect, useState } from "react";
 
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 
-import {
-  getPageData
-} from "./services/api";
+import {getPageData} from "./services/api";
 
 import "./App.css";
 
@@ -33,22 +24,13 @@ const defaultPageData = {
 
 function App() {
 
-  const [
-    pageData,
-    setPageData
-  ] = useState(defaultPageData);
+  const [pageData, setPageData] = useState(defaultPageData);
 
 
-  const [
-    loading,
-    setLoading
-  ] = useState(true);
+  const [loading, setLoading] = useState(true);
 
 
-  const [
-    error,
-    setError
-  ] = useState(null);
+  const [error, setError] = useState(null);
 
 
   // Load page data from MongoDB
