@@ -64,14 +64,13 @@ function Edit({ pageData, setPageData }) {
 
   return (
 
-    <main className="page">
+    <main className="edit-page">
 
       <section className="editor-section">
 
         <h1>Edit Homepage</h1>
 
 
-        {/* Heading */}
 
         <div className="form-group">
 
@@ -95,7 +94,6 @@ function Edit({ pageData, setPageData }) {
         </div>
 
 
-        {/* Description */}
 
         <div className="form-group">
 
@@ -118,7 +116,6 @@ function Edit({ pageData, setPageData }) {
         </div>
 
 
-        {/* Slides */}
 
         <h2>
           Slides
@@ -225,7 +222,6 @@ function Edit({ pageData, setPageData }) {
         ))}
 
 
-        {/* Add */}
 
         <div className="editor-actions">
 
