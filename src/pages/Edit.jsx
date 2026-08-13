@@ -31,7 +31,7 @@ function Edit({ pageData, setPageData }) {
 
     const newSlide = {
       id: Date.now(),
-      image: "https://picsum.photos/800/500",
+      image: "https://www.9mindia.in/wp-content/uploads/2026/05/team-members-discussing-a-project-in-office-2026-03-18-05-34-54-utc-1.webp",
       title: "New Slide",
       description: "New slide description."
     };
